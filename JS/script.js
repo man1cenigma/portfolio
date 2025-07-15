@@ -34,7 +34,7 @@ class Starfall {
     this.canvas = document.getElementById(canvasId);
     this.ctx = this.canvas ? this.canvas.getContext('2d') : null;
     this.options = {
-      numStars: options.numStars || 25,
+      numStars: options.numStars || 45,
       maxStars: options.maxStars || 60,
       ...options
     };
