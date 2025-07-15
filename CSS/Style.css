@@ -428,7 +428,7 @@ form#contact_form textarea:focus {
   left: 0;
   top: 0;
   pointer-events: none;
-  z-index: 0;
+  z-index: 1;
   overflow: hidden;
 }
 
