@@ -118,6 +118,8 @@ header {
 main {
   margin-left: var(--sidebar-width);
   padding: 4rem 2rem 2rem 2rem;
+  position: relative;
+  z-index: 1;
 }
 
 /* ====== BUTTONS & CARDS ====== */
@@ -190,6 +192,8 @@ main {
   justify-content: center;
   text-align: center;
   margin-top: 100px;
+  position: relative;
+  z-index: 2;
 }
 
 .hero-content h1 {
@@ -210,6 +214,8 @@ main {
   border-radius: var(--border-radius);
   margin-bottom: 2.5rem;
   box-shadow: var(--shadow-medium);
+  position: relative;
+  z-index: 2;
 }
 
 .about-section {
@@ -222,6 +228,8 @@ main {
   border-radius: var(--border-radius);
   box-shadow: var(--shadow-medium);
   margin-bottom: 3rem;
+  position: relative;
+  z-index: 2;
 }
 
 .about-header {
@@ -342,6 +350,8 @@ main {
   background: var(--secondary-color);
   border-radius: var(--border-radius);
   margin-bottom: 2rem;
+  position: relative;
+  z-index: 2;
 }
 
 .contact-section h2 {
@@ -411,7 +421,7 @@ form#contact_form textarea:focus {
 }
 
 /* ====== ANIMATIONS ====== */
-.starfall {
+#starfall-canvas {
   position: fixed;
   width: 100vw;
   height: 100vh;
@@ -422,36 +432,7 @@ form#contact_form textarea:focus {
   overflow: hidden;
 }
 
-.falling-star {
-  position: absolute;
-  top: -10px;
-  left: 50vw;
-  width: 2px;
-  height: 60px;
-  background: linear-gradient(180deg, var(--primary-color) 0%, rgba(255, 34, 34, 0.2) 100%);
-  opacity: 0.85;
-  border-radius: 2px;
-  box-shadow: 0 0 8px 2px var(--primary-color), var(--shadow-glow);
-  animation: fall 2.5s linear infinite;
-}
 
-.falling-star:nth-child(3n) {
-  background: linear-gradient(180deg, #fff 0%, rgba(255, 34, 34, 0.1) 100%);
-  box-shadow: 0 0 6px 1px #fff, 0 0 12px 2px var(--primary-color);
-  opacity: 0.7;
-}
-
-.falling-star:nth-child(5n) {
-  background: linear-gradient(180deg, #b30000 0%, rgba(255, 34, 34, 0.1) 100%);
-  box-shadow: 0 0 10px 2px #b30000, 0 0 20px 4px var(--primary-color);
-  opacity: 0.9;
-}
-
-@keyframes fall {
-  0% { transform: translateY(0) scaleX(1) scaleY(1) rotate(-15deg); opacity: 1; }
-  90% { opacity: 1; }
-  100% { transform: translateY(110vh) scaleX(0.8) scaleY(1.2) rotate(-15deg); opacity: 0; }
-}
 
 #sharingan-eye-container {
   position: fixed;
