@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AM's Portfolio</title>
+    
+    <!-- Single CSS file -->
+    <link rel="stylesheet" href="./CSS/Style.css">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Background Elements -->
+    <div class="starfall" aria-hidden="true"></div>
+    
+    <!-- Header -->
+    <header class="header">
+        <h1>AM J Portfolio</h1>
+    </header>
+    
+    <!-- Navigation -->
+    <nav class="sidebar" role="navigation">
+        <div class="logo">AM J</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#my_about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <!-- Main Content -->
+    <main>
+        <section id="home" class="hero-section">
+            <div class="hero-content">
+                <h1>Hello, I'm <span class="accent">Joshua Coleman</span></h1>
+                <p>Passionate aspiring developer crafting modern, responsive web experiences.</p>
+                <a href="#projects" class="btn accent-btn">View My Work</a>
+            </div>
+        </section>
+        
+        <section id="projects" class="projects-section">
+            <h2>Projects</h2>
+            <div class="project-cards">
+                <div class="project-card">
+                    <h3>Portfolio Website</h3>
+                    <p>A personal portfolio to showcase my skills, projects, and contact information. Built with HTML, CSS, and JavaScript.</p>
+                    <a href="#" class="btn">View Project</a>
+                </div>
+                <div class="project-card">
+                    <h3>JavaScript Game</h3>
+                    <p>A browser-based game using vanilla JavaScript and CSS animations to create an interactive user experience.</p>
+                    <a href="#" class="btn">View Project</a>
+                </div>
+                <div class="project-card">
+                    <h3>Weather Dashboard</h3>
+                    <p>A responsive web app that displays real-time weather data for any city using a public weather API.</p>
+                    <a href="#" class="btn">View Project</a>
+                </div>
+                <div class="project-card">
+                    <h3>Task Tracker</h3>
+                    <p>A simple and intuitive to-do list application that helps users manage daily tasks and stay organized.</p>
+                    <a href="#" class="btn">View Project</a>
+                </div>
+                <div class="project-card">
+                    <h3>Blog Platform</h3>
+                    <p>A minimal blog platform where users can read, write, and comment on articles. Focused on clean design and usability.</p>
+                    <a href="#" class="btn">View Project</a>
+                </div>
+            </div>
+            <div class="skills">
+                <h4>Skills</h4>
+                <img src="./assets/html5.ico" alt="HTML5 icon">
+                <img src="./assets/css3.ico" alt="CSS3 icon">
+                <img src="./assets/js.ico" alt="JavaScript icon">
+            </div>
+        </section>
+        
+        <section id="my_about" class="about-section card">
+            <div class="about-header">
+                <h2>About Me</h2>
+                <p class="about-subtitle">My Journey as a Developer</p>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="./assets/profile.png" alt="Profile Image">
+                </div>
+                
+                <div class="about-text">
+                    <div class="about-intro">
+                        <h3>Background</h3>
+                        <p>My journey as a developer began with a curiosity for how things work behind the scenes on the web. Starting with the fundamentals of HTML, CSS, and JavaScript, I built my own portfolio website from scratch, learning the importance of clean design, responsive layouts, and user experience.</p>
+                    </div>
+                    
+                    <div class="about-education">
+                        <h3>Education & Training</h3>
+                        <p>As my skills grew, I dove into C# and software engineering principles through a structured bootcamp. I tackled a wide range of projects, from simple variable and math demos to more complex applications involving arrays, exception handling, and object-oriented programming. Each project challenged me to think critically, debug efficiently, and write maintainable code.</p>
+                    </div>
+                    
+                    <div class="about-skills">
+                        <h3>Technical Skills</h3>
+                        <p>Through hands-on practice with conditionals, loops, and methods, I developed a strong foundation in problem-solving and logical thinking. My later work with encapsulation and abstraction in C# helped me appreciate the power of modular, reusable code. I've learned to approach challenges with creativity and persistence, always striving to improve both my technical and soft skills.</p>
+                    </div>
+                    
+                    <div class="about-future">
+                        <h3>Looking Forward</h3>
+                        <p>Today, I am confident building both web and desktop applications, and I am excited to keep learning and growing as a developer. I look forward to taking on new projects that push my abilities and allow me to create meaningful, user-focused solutions. My goal is to contribute to innovative projects that make a real difference in people's lives.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="about-highlights">
+                <div class="highlight-card">
+                    <h4>Frontend Development</h4>
+                    <p>HTML5, CSS3, JavaScript, Responsive Design</p>
+                </div>
+                <div class="highlight-card">
+                    <h4>Backend Development</h4>
+                    <p>C#, Object-Oriented Programming, Data Structures</p>
+                </div>
+                <div class="highlight-card">
+                    <h4>Problem Solving</h4>
+                    <p>Debugging, Algorithm Design, Code Optimization</p>
+                </div>
+                <div class="highlight-card">
+                    <h4>Soft Skills</h4>
+                    <p>Communication, Teamwork, Continuous Learning</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="contact" class="contact-section card">
+            <h2>Contact</h2>
+            <form id="contact_form">
+                <label for="name">Name *</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="message">Message *</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+                
+                <input type="submit" value="Send Message" class="btn accent-btn">
+            </form>
+            
+            <div id="confirmation" class="confirmation-message" style="display: none;">
+                <h3>Thank you for your message!</h3>
+                <p>I'll get back to you as soon as possible.</p>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Interactive Elements -->
+    <div id="sharingan-eye-container" aria-hidden="true">
+        <div class="sharingan-eye sharingan-eye-1"></div>
+        <div class="sharingan-eye sharingan-eye-2"></div>
+        <div class="sharingan-eye sharingan-eye-3"></div>
+    </div>
+    
+    <!-- Single JavaScript file -->
+    <script src="./JS/script.js"></script>
+</body>
+</html>
