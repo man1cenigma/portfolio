@@ -30,39 +30,124 @@ const Utils = {
 
 // ===== STARFALL ANIMATION =====
 class Starfall {
-  constructor(containerSelector, options = {}) {
-    this.container = document.querySelector(containerSelector);
+  constructor(canvasId, options = {}) {
+    this.canvas = document.getElementById(canvasId);
+    this.ctx = this.canvas ? this.canvas.getContext('2d') : null;
     this.options = {
       numStars: options.numStars || 25,
       maxStars: options.maxStars || 60,
       ...options
     };
+    this.stars = [];
+    this.animationId = null;
     
-    if (this.container) {
+    if (this.canvas && this.ctx) {
       this.init();
     }
   }
 
   init() {
+    this.setupCanvas();
     this.generateStars();
+    this.startAnimation();
+  }
+
+  setupCanvas() {
+    this.canvas.width = window.innerWidth;
+    this.canvas.height = window.innerHeight;
+    
+    // Update canvas size on resize
+    window.addEventListener('resize', () => {
+      this.canvas.width = window.innerWidth;
+      this.canvas.height = window.innerHeight;
+    });
   }
 
   generateStars() {
-    const { numStars, maxStars } = this.options;
+    const { maxStars } = this.options;
     
-    // Generate stars with randomized properties
     for (let i = 0; i < maxStars; i++) {
-      const star = document.createElement('div');
-      star.className = 'falling-star';
+      this.stars.push({
+        x: Utils.random(0, window.innerWidth),
+        y: Utils.random(-100, -10),
+        width: Utils.random(1.5, 3),
+        height: Utils.random(40, 80),
+        speed: Utils.random(2, 4),
+        opacity: Utils.random(0.6, 1),
+        type: i % 3 === 0 ? 'white' : (i % 5 === 0 ? 'dark' : 'normal'),
+        resetY: Utils.random(-200, -50)
+      });
+    }
+  }
+
+  updateStars() {
+    this.stars.forEach(star => {
+      star.y += star.speed;
       
-      // Randomize properties for natural distribution
-      star.style.left = `${Utils.random(0, 100)}vw`;
-      star.style.width = `${Utils.random(1.5, 3)}px`;
-      star.style.height = `${Utils.random(40, 80)}px`;
-      star.style.animationDuration = `${Utils.random(2, 3.5)}s`;
-      star.style.animationDelay = `${Utils.random(0, 2)}s`;
+      // Reset star when it goes off screen
+      if (star.y > window.innerHeight + 100) {
+        star.x = Utils.random(0, window.innerWidth);
+        star.y = star.resetY;
+        star.speed = Utils.random(2, 4);
+      }
+    });
+  }
+
+  drawStars() {
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    
+    this.stars.forEach(star => {
+      this.ctx.save();
       
-      this.container.appendChild(star);
+      // Set star color and glow based on type
+      let color, glowColor;
+      switch(star.type) {
+        case 'white':
+          color = '#ffffff';
+          glowColor = '#ff2222';
+          break;
+        case 'dark':
+          color = '#b30000';
+          glowColor = '#ff2222';
+          break;
+        default:
+          color = '#ff2222';
+          glowColor = '#ff2222';
+      }
+      
+      // Create gradient for star trail
+      const gradient = this.ctx.createLinearGradient(
+        star.x, star.y,
+        star.x, star.y + star.height
+      );
+      gradient.addColorStop(0, color);
+      gradient.addColorStop(1, 'rgba(255, 34, 34, 0.1)');
+      
+      // Draw glow effect
+      this.ctx.shadowBlur = 8;
+      this.ctx.shadowColor = glowColor;
+      
+      // Draw star
+      this.ctx.globalAlpha = star.opacity;
+      this.ctx.fillStyle = gradient;
+      this.ctx.fillRect(star.x, star.y, star.width, star.height);
+      
+      this.ctx.restore();
+    });
+  }
+
+  startAnimation() {
+    const animate = () => {
+      this.updateStars();
+      this.drawStars();
+      this.animationId = requestAnimationFrame(animate);
+    };
+    animate();
+  }
+
+  stop() {
+    if (this.animationId) {
+      cancelAnimationFrame(this.animationId);
     }
   }
 }
@@ -207,7 +292,7 @@ class PortfolioApp {
 
   initializeComponents() {
     this.components.navigation = new Navigation();
-    this.components.starfall = new Starfall('.starfall', {
+    this.components.starfall = new Starfall('starfall-canvas', {
       numStars: 25,
       maxStars: 60
     });
